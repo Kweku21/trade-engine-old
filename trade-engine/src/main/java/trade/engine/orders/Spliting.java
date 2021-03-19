@@ -222,30 +222,30 @@ public class Spliting {
 
 
 
-    public static void main(String[] args) throws JsonProcessingException {
-
-//        Order order = new Order(1L, orderId, "IBM",10,10,"buy","pending", portfolioId, clientId, validationStatus, createAt);
-
-        Order order = new Order(1L,"IBM",20,10,"buy","pending",1L,2L,"done", LocalDate.now());
-
-        Spliting spliting = new Spliting(order);
-
-        spliting.sendToExchange();
-
-//        System.out.println(order);
-//        System.out.println(spliting);
-
-//        String url = "https://exchange.matraining.com/orderbook/IBM/buy";
+//    public static void main(String[] args) throws JsonProcessingException {
 //
-//        RestTemplate restTemplate = new RestTemplate();
+////        Order order = new Order(1L, orderId, "IBM",10,10,"buy","pending", portfolioId, clientId, validationStatus, createAt);
 //
-//        ResponseEntity<List<MallonOrder>> responseEntity =
-//                restTemplate.exchange(url,
-//                        HttpMethod.GET, null, new ParameterizedTypeReference<List<MallonOrder>>() {
-//                        });
-//        List<MallonOrder> mallonOrder = responseEntity.getBody();
-//        System.out.println(mallonOrder);
-    }
+//        Order order = new Order(1L,"IBM",20,10,"buy","pending",1L,2L,"done", LocalDate.now());
+//
+//        Spliting spliting = new Spliting(order);
+//
+//        spliting.sendToExchange();
+//
+////        System.out.println(order);
+////        System.out.println(spliting);
+//
+////        String url = "https://exchange.matraining.com/orderbook/IBM/buy";
+////
+////        RestTemplate restTemplate = new RestTemplate();
+////
+////        ResponseEntity<List<MallonOrder>> responseEntity =
+////                restTemplate.exchange(url,
+////                        HttpMethod.GET, null, new ParameterizedTypeReference<List<MallonOrder>>() {
+////                        });
+////        List<MallonOrder> mallonOrder = responseEntity.getBody();
+////        System.out.println(mallonOrder);
+//    }
 
 
 }
