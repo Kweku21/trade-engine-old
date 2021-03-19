@@ -6,6 +6,9 @@ import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.*;
 import org.springframework.web.client.RestTemplate;
 import redis.clients.jedis.Jedis;
+
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.*;
 
 
@@ -80,7 +83,7 @@ public class Spliting {
 
                     //Buy all from here
 
-                    ExchangeOrder exchangeOrder = new ExchangeOrder(order.getId(),
+                    ExchangeOrder exchangeOrder = new ExchangeOrder(order.getOrderId(),
                                                                     order.getProduct(),
                                                                     order.getQuantity(),
                                                                     order.getPrice(),
@@ -93,7 +96,7 @@ public class Spliting {
                     
                 }else{
 
-                    ExchangeOrder exchangeOrder = new ExchangeOrder(order.getId(),
+                    ExchangeOrder exchangeOrder = new ExchangeOrder(order.getOrderId(),
                             order.getProduct(),
                             buyQuantity,
                             order.getPrice(),
@@ -103,7 +106,7 @@ public class Spliting {
                     orderString = mapper.writeValueAsString(exchangeOrder);
                     jedis.rpush("incoming-orders", orderString);
 
-                    ExchangeOrder exchangeOrder2 = new ExchangeOrder(order.getId(),
+                    ExchangeOrder exchangeOrder2 = new ExchangeOrder(order.getOrderId(),
                             order.getProduct(),
                             leftQuantity,
                             order.getPrice(),
@@ -130,7 +133,7 @@ public class Spliting {
 
                     //Buy all from here
 
-                    ExchangeOrder exchangeOrder = new ExchangeOrder(order.getId(),
+                    ExchangeOrder exchangeOrder = new ExchangeOrder(order.getOrderId(),
                             order.getProduct(),
                             order.getQuantity(),
                             order.getPrice(),
@@ -143,7 +146,7 @@ public class Spliting {
 
                 }else{
 
-                    ExchangeOrder exchangeOrder = new ExchangeOrder(order.getId(),
+                    ExchangeOrder exchangeOrder = new ExchangeOrder(order.getOrderId(),
                             order.getProduct(),
                             buyQuantity,
                             order.getPrice(),
@@ -153,7 +156,7 @@ public class Spliting {
                     orderString = mapper.writeValueAsString(exchangeOrder);
                     jedis.rpush("incoming-orders", orderString);
 
-                    ExchangeOrder exchangeOrder2 = new ExchangeOrder(order.getId(),
+                    ExchangeOrder exchangeOrder2 = new ExchangeOrder(order.getOrderId(),
                             order.getProduct(),
                             leftQuantity,
                             order.getPrice(),
@@ -176,7 +179,7 @@ public class Spliting {
 
                     //Buy all from here
 
-                    ExchangeOrder exchangeOrder = new ExchangeOrder(order.getId(),
+                    ExchangeOrder exchangeOrder = new ExchangeOrder(order.getOrderId(),
                             order.getProduct(),
                             order.getQuantity(),
                             order.getPrice(),
@@ -189,7 +192,7 @@ public class Spliting {
 
                 }else{
 
-                    ExchangeOrder exchangeOrder = new ExchangeOrder(order.getId(),
+                    ExchangeOrder exchangeOrder = new ExchangeOrder(order.getOrderId(),
                             order.getProduct(),
                             buyQuantity,
                             order.getPrice(),
@@ -199,7 +202,7 @@ public class Spliting {
                     orderString = mapper.writeValueAsString(exchangeOrder);
                     jedis.rpush("incoming-orders", orderString);
 
-                    ExchangeOrder exchangeOrder2 = new ExchangeOrder(order.getId(),
+                    ExchangeOrder exchangeOrder2 = new ExchangeOrder(order.getOrderId(),
                             order.getProduct(),
                             leftQuantity,
                             order.getPrice(),
@@ -221,14 +224,16 @@ public class Spliting {
 
     public static void main(String[] args) throws JsonProcessingException {
 
-        Order order = new Order(1L,"IBM",10,10,"buy","pending");
+//        Order order = new Order(1L, orderId, "IBM",10,10,"buy","pending", portfolioId, clientId, validationStatus, createAt);
+
+        Order order = new Order(1L,"IBM",20,10,"buy","pending",1L,2L,"done", LocalDate.now());
 
         Spliting spliting = new Spliting(order);
 
         spliting.sendToExchange();
 
-        System.out.println(order);
-        System.out.println(spliting);
+//        System.out.println(order);
+//        System.out.println(spliting);
 
 //        String url = "https://exchange.matraining.com/orderbook/IBM/buy";
 //

@@ -1,35 +1,85 @@
 package trade.engine.orders;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
+
 public class Order {
 
-    private Long id;
+    private Long orderId;
     private String product;
     private int quantity;
     private double price;
-
-
-
     private String side;
     private String status;
+    private Long portfolioId;
+    private Long clientId;
+    private String validationStatus;
+    private LocalDate createAt;
 
-    public Order(Long id, String product, int quantity, double price, String side, String status) {
-        this.id = id;
+
+    public Order(Long orderId,
+                 String product,
+                 int quantity,
+                 double price,
+                 String side,
+                 String status,
+                 Long portfolioId,
+                 Long clientId,
+                 String validationStatus,
+                 LocalDate createAt) {
+        this.orderId = orderId;
         this.product = product;
         this.quantity = quantity;
         this.price = price;
         this.side = side;
         this.status = status;
+        this.portfolioId = portfolioId;
+        this.clientId = clientId;
+        this.validationStatus = validationStatus;
+        this.createAt = createAt;
     }
 
     public Order() {
     }
 
-    public Long getId() {
-        return id;
+    public Long getOrderId() {
+        return orderId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setOrderId(Long orderId) {
+        this.orderId = orderId;
+    }
+
+    public Long getPortfolioId() {
+        return portfolioId;
+    }
+
+    public void setPortfolioId(Long portfolioId) {
+        this.portfolioId = portfolioId;
+    }
+
+    public Long getClientId() {
+        return clientId;
+    }
+
+    public void setClientId(Long clientId) {
+        this.clientId = clientId;
+    }
+
+    public String getValidationStatus() {
+        return validationStatus;
+    }
+
+    public void setValidationStatus(String validationStatus) {
+        this.validationStatus = validationStatus;
+    }
+
+    public LocalDate getCreateAt() {
+        return createAt;
+    }
+
+    public void setCreateAt(LocalDate createAt) {
+        this.createAt = createAt;
     }
 
     public String getProduct() {
@@ -72,15 +122,21 @@ public class Order {
         this.status = status;
     }
 
+
+
     @Override
     public String toString() {
         return "Order{" +
-                "id=" + id +
+                "orderId=" + orderId +
                 ", product='" + product + '\'' +
                 ", quantity=" + quantity +
                 ", price=" + price +
                 ", side='" + side + '\'' +
                 ", status='" + status + '\'' +
+                ", portfolioId=" + portfolioId +
+                ", clientId=" + clientId +
+                ", validationStatus='" + validationStatus + '\'' +
+                ", createAt=" + createAt +
                 '}';
     }
 }

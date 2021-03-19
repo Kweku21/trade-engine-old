@@ -2,7 +2,7 @@ package trade.engine.orders;
 
 public class ExchangeOrder {
 
-    private Long clientId;
+    private Long orderId;
     private String product;
     private int quantity;
     private double price;
@@ -10,8 +10,8 @@ public class ExchangeOrder {
     private String status;
     private String exchange;
 
-    public ExchangeOrder(Long clientId, String product, int quantity, double price, String side, String status, String exchange) {
-        this.clientId = clientId;
+    public ExchangeOrder(Long orderId, String product, int quantity, double price, String side, String status, String exchange) {
+        this.orderId = orderId;
         this.product = product;
         this.quantity = quantity;
         this.price = price;
@@ -23,12 +23,12 @@ public class ExchangeOrder {
     public ExchangeOrder() {
     }
 
-    public Long getClientId() {
-        return clientId;
+    public Long getOrderId() {
+        return orderId;
     }
 
-    public void setClientId(Long clientId) {
-        this.clientId = clientId;
+    public void setOrderId(Long orderId) {
+        this.orderId = orderId;
     }
 
     public String getProduct() {
@@ -82,7 +82,7 @@ public class ExchangeOrder {
     @Override
     public String toString() {
         return "ExchangeOrder{" +
-                "clientId=" + clientId +
+                "orderId=" + orderId +
                 ", product='" + product + '\'' +
                 ", quantity=" + quantity +
                 ", price=" + price +

@@ -23,9 +23,7 @@ public class OrderController {
 
         Spliting orderSpliting = new Spliting(order);
 
-//        String buyFrom = orderSpliting.getLowersPrice();
-//
-//        orderService.makeOrder(order,buyFrom);
+        orderSpliting.sendToExchange();
 
         return new ResponseEntity<>("Order is been processed ", HttpStatus.OK);
     }
